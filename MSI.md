@@ -1,7 +1,8 @@
 ---
 project: "Multispectral Imaging (MSI)"
 projectMembers: []
-supervisors: []
+supervisors:
+  - "roshang@eng.pdn.ac.lk"
 researchArea: Multispectral Imaging
 researchPillars: []
 coverImage: ./cover_images/MSI.jpg

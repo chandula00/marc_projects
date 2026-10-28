@@ -1,7 +1,8 @@
 ---
 project: "Biomechanical Motion Capture & Sports Performance Analysis"
 projectMembers: []
-supervisors: []
+supervisors:
+  - "roshang@eng.pdn.ac.lk"
 researchArea: Biomedical Engineering and Wearables
 researchPillars: []
 coverImage: ./cover_images/Biomechanics.jpg

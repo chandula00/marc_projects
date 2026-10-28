@@ -1,7 +1,9 @@
 ---
 project: "Digital Twins for Agriculture"
-projectMembers: []
-supervisors: []
+projectMembers:
+  - "e19101@eng.pdn.ac.lk"
+supervisors:
+  - "roshang@eng.pdn.ac.lk"
 researchArea: Computer Vision
 researchPillars: []
 coverImage: ./cover_images/Agrovoltaic.jpg
