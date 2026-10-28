@@ -4,11 +4,40 @@
 
 If your pull request is merged here, the website workflow will clone this repository into the website build, and your project can appear on the live site.
 
+## :file_folder: Where things go
+
+```text
+marc_projects/
+├── projects/              ← one Markdown file per project
+│   ├── Example_Project.md
+│   ├── cover_images/      ← cover images
+│   └── images/            ← figures used inside project pages
+└── scripts/validate-projects.mjs
+```
+
+Markdown files outside `projects/` are not picked up by the website, and the validator reports them. Image paths in the front matter stay relative to the Markdown file, e.g. `./cover_images/example_project.jpg`.
+
+## :key: Linking keys: keep these exactly the same
+
+These values connect a project to the rest of the website. Everything else (`researchPillars`, `coverImage`, the description) is safe to change at any time.
+
+| Key | Must match | Purpose |
+|---|---|---|
+| `projectMembers`, `supervisors` | The `email` in each person's [marc_people](https://github.com/pdnMARC/marc_people) profile | Shows the team on the project page. An email with no matching profile is left out until that person adds one. Copy addresses; write them in lower case. |
+| File name | The project's tab in the MARC Publications sheet | Links the project's publications. Also the page address (`Example_Project.md` → `/projects/example_project/`), and how the website's `highlights` and `projectPublicationTabs` (in `src/data/site.ts`) refer to the project. |
+| `project` (title) | The publications tab, if the tab is named after the title | The title shown on the website. |
+| `researchArea` | One of the six research area names, spelled exactly | Places the project on its research area page. |
+
+- **Renaming a project file:** rename its publications tab to match and ask a website maintainer to update `src/data/site.ts`; links to the old address stop working.
+- **A team member's email changes:** update their profile and every project that lists it, and merge both together.
+
+Full guide: [pdnmarc.github.io/docs/projects](https://pdnmarc.github.io/docs/projects/)
+
 ## :sparkles: What you will add
 
 You will usually add:
 - one Markdown file for your project
-- one cover image inside `cover_images/`
+- one cover image inside `projects/cover_images/`
 
 A typical project file looks like this:
 
@@ -132,10 +161,10 @@ This project focuses on robust image analysis for real-world environments.
 More details can be linked here: [Project page](https://example.com).
 
 Here is an inline image:
-![Example figure](./cover_images/example_project.jpg)
+![Example figure](./images/example_figure.jpg)
 ```
 
-If you include an image in the content section, use a relative path to a file inside the repository. The image can be placed at any place inside the repo (You don't need to place it in the cover_images folder, in fact don't place them there!)
+If you include an image in the content section, put it in `projects/images/` and use a path relative to your project file, such as `./images/example_figure.jpg`. Keep `projects/cover_images/` for cover images only.
 
 Keep it reasonably simple and readable. Plain paragraphs are completely fine.
 
@@ -176,7 +205,7 @@ This is the easiest option if you do not want to use Git locally.
 ### 2. Create your project file in the browser
 
 1. Open your fork on GitHub.
-2. In the repository root, click `Add file`.
+2. Open the `projects/` folder, then click `Add file`.
 3. Choose `Create new file`.
 4. Name the file something clear, for example:
 
@@ -206,7 +235,7 @@ This project studies ...
 
 ### 3. Add your cover image in the browser
 
-1. Open the `cover_images/` folder in your fork.
+1. Open the `projects/cover_images/` folder in your fork.
 2. Click `Add file`.
 3. Choose `Upload files`.
 4. Upload your image.
@@ -230,7 +259,7 @@ If you already have a project entry and just want to update it:
 1. Open the existing `.md` file in your fork.
 2. Click the pencil icon to edit it.
 3. Update the front matter or description.
-4. If needed, upload a new image to `cover_images/`.
+4. If needed, upload a new image to `projects/cover_images/`.
 5. Scroll down and commit the change to a new branch.
 6. Open a pull request.
 
@@ -278,7 +307,7 @@ Use any clear branch name such as `add-example-project`.
 
 ### 4. Add your project file
 
-Create a new Markdown file in the repository root.
+Create a new Markdown file inside the `projects/` folder.
 
 Example:
 
@@ -308,7 +337,7 @@ This project studies ...
 
 ### 5. Add your cover image
 
-Put the image file inside the `cover_images/` folder and reference it in `coverImage`.
+Put the image file inside the `projects/cover_images/` folder and reference it in `coverImage`.
 
 Example:
 
@@ -344,14 +373,14 @@ In practice, the flow is:
 
 ## :white_check_mark: Checklist before opening the pull request
 
-- Your Markdown file is in the repository root.
+- Your Markdown file is in the `projects/` folder.
 - Your front matter includes all required fields.
 - Your YAML indentation is consistent and uses spaces, not tabs.
 - Your `projectMembers` list is written as a YAML list.
 - Your `supervisors` list is written as a YAML list.
 - Your `researchArea` exactly matches one of the allowed values above, including capitalization.
 - Your `coverImage` path is correct.
-- Your cover image file is inside `cover_images/`.
+- Your cover image file is inside `projects/cover_images/`.
 - Use email addresses in `projectMembers` and `supervisors` when you want automatic linking to the people page.
 - Plain names or other text are also allowed, but they will display as plain text if they do not match a `marc_people` email.
 - Your project description is below the closing `---` line.

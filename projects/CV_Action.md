@@ -1,7 +1,8 @@
 ---
 project: "Lightweight Activity Understanding"
 projectMembers: []
-supervisors: []
+supervisors:
+  - "roshang@eng.pdn.ac.lk"
 researchArea: Computer Vision
 researchPillars: []
 coverImage: ./cover_images/CV_Action.jpg
