@@ -1,6 +1,7 @@
 ---
 project: "Data-Centric AI for Fair and Robust Dermatology"
-projectMembers: []
+projectMembers:
+  - chandulaj@eng.pdn.ac.lk
 supervisors: []
 researchArea: Biomedical Engineering and Wearables
 researchPillars: []
