@@ -4,6 +4,8 @@ import matter from "gray-matter";
 import { z } from "zod";
 
 const repoRoot = process.cwd();
+// Markdown files live in projects/, together with their images (projects/cover_images/).
+const contentDir = path.join(repoRoot, "projects");
 const allowedResearchAreas = [
   "Biomedical Engineering and Wearables",
   "Computer Vision",
@@ -25,22 +27,31 @@ const frontmatterSchema = z
   })
   .strict();
 
-const markdownFiles = fs
+const isMarkdown = (entry) =>
+  entry.isFile() &&
+  entry.name.toLowerCase().endsWith(".md") &&
+  entry.name.toLowerCase() !== "readme.md";
+
+// Markdown left at the repository root is not picked up by the website.
+const misplacedFiles = fs
   .readdirSync(repoRoot, { withFileTypes: true })
-  .filter(
-    (entry) =>
-      entry.isFile() &&
-      entry.name.toLowerCase().endsWith(".md") &&
-      entry.name.toLowerCase() !== "readme.md",
-  )
+  .filter(isMarkdown)
+  .map((entry) => entry.name);
+
+const markdownFiles = fs
+  .readdirSync(contentDir, { withFileTypes: true })
+  .filter(isMarkdown)
   .map((entry) => entry.name)
   .sort((a, b) => a.localeCompare(b));
 
 const failures = [];
+for (const fileName of misplacedFiles) {
+  failures.push(`${fileName}: move this file into the projects/ folder`);
+}
 const seenProjects = new Map();
 
 for (const fileName of markdownFiles) {
-  const filePath = path.join(repoRoot, fileName);
+  const filePath = path.join(contentDir, fileName);
   const raw = fs.readFileSync(filePath, "utf8");
 
   let parsed;
@@ -73,7 +84,7 @@ for (const fileName of markdownFiles) {
 
   if (!data.coverImage.startsWith("./cover_images/")) {
     failures.push(
-      `${fileName}: coverImage must use a repo-relative path starting with "./cover_images/"`,
+      `${fileName}: coverImage must use a relative path starting with "./cover_images/"`,
     );
   }
 
