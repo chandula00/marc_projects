@@ -23,13 +23,20 @@ These values connect a project to the rest of the website. Everything else (`res
 
 | Key | Must match | Purpose |
 |---|---|---|
-| `projectMembers`, `supervisors` | The `email` in each person's [marc_people](https://github.com/pdnMARC/marc_people) profile | Shows the team on the project page. An email with no matching profile is left out until that person adds one. Copy addresses; write them in lower case. |
+| `projectMembers`, `supervisors` | The `email`, or one of the `otherEmails`, in each person's [marc_people](https://github.com/pdnMARC/marc_people) profile (case doesn't matter) | Shows the team on the project page. An email with no matching profile is left out until that person adds a profile or adds the address to their `otherEmails`. |
 | File name | The project's tab in the MARC Publications sheet | Links the project's publications. Also the page address (`Example_Project.md` → `/projects/example_project/`), and how the website's `highlights` and `projectPublicationTabs` (in `src/data/site.ts`) refer to the project. |
 | `project` (title) | The publications tab, if the tab is named after the title | The title shown on the website. |
 | `researchArea` | One of the six research area names, spelled exactly | Places the project on its research area page. |
 
 - **Renaming a project file:** rename its publications tab to match and ask a website maintainer to update `src/data/site.ts`; links to the old address stop working.
-- **A team member's email changes:** update their profile and every project that lists it, and merge both together.
+- **A team member's email changes:** nothing to change here. They move the old address to `otherEmails` in their profile, and the project keeps linking to them.
+- **Adding or removing a team member:** team membership is recorded only here, not in the person's profile. Add or delete their email line under `projectMembers` or `supervisors` (replace `[]` with a list when adding the first one). If they have no profile yet, they also add one in [marc_people](https://github.com/pdnMARC/marc_people) with the same email; they appear on the project page once both are merged.
+
+  ```yaml
+  projectMembers:
+    - researcher1@eng.pdn.ac.lk
+    - new.member@eng.pdn.ac.lk
+  ```
 
 Full guide: [pdnmarc.github.io/docs/projects](https://pdnmarc.github.io/docs/projects/)
 
