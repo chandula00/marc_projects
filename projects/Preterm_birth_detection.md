@@ -2,6 +2,7 @@
 project: Preterm Birth Detection
 projectMembers: 
  - "e19328@eng.pdn.ac.lk"
+ - senith@eng.pdn.ac.lk
 supervisors: 
  - "roshang@eng.pdn.ac.lk"
  - Parakrama
