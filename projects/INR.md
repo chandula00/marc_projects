@@ -4,6 +4,7 @@ projectMembers:
  - "dmu.praveen@gmail.com"
  - "e19328@eng.pdn.ac.lk"
  - "e19101@eng.pdn.ac.lk"
+ - athulya@eng.pdn.ac.lk
 supervisors: 
  - "roshang@eng.pdn.ac.lk"
 researchArea: Generative AI

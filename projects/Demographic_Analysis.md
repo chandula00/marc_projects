@@ -1,6 +1,7 @@
 ---
 project: "Demographic Analysis"
-projectMembers: []
+projectMembers:
+  - athulya@eng.pdn.ac.lk
 supervisors: []
 researchArea: Socioeconomic
 researchPillars: []
