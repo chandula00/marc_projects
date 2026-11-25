@@ -2,6 +2,7 @@
 project: "Multispectral Imaging (MSI)"
 projectMembers:
   - senith@eng.pdn.ac.lk
+  - e19312@eng.pdn.ac.lk
 supervisors:
   - "roshang@eng.pdn.ac.lk"
 researchArea: Multispectral Imaging
