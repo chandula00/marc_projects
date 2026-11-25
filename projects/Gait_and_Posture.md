@@ -1,6 +1,7 @@
 ---
 project: "Gait and Posture Analysis"
-projectMembers: []
+projectMembers:
+  - mahelap@eng.pdn.ac.lk
 supervisors: []
 researchArea: Biomedical Engineering and Wearables
 researchPillars: []

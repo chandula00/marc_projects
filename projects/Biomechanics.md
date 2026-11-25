@@ -2,6 +2,7 @@
 project: "Biomechanical Motion Capture & Sports Performance Analysis"
 projectMembers:
   - chamodyas@eng.pdn.ac.lk
+  - mahelap@eng.pdn.ac.lk
 supervisors:
   - "roshang@eng.pdn.ac.lk"
 researchArea: Biomedical Engineering and Wearables
