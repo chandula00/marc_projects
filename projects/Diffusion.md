@@ -3,6 +3,7 @@ project: "Diffusion Models"
 projectMembers:
   - senith@eng.pdn.ac.lk
   - chandulaj@eng.pdn.ac.lk
+  - e19312@eng.pdn.ac.lk
 supervisors: []
 researchArea: Generative AI
 researchPillars: []
